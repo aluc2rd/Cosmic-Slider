@@ -6,8 +6,8 @@
 }
 /* База для всей страницы */
 body {
-	/* Градиентный фон от синего к фиолетовому под 135 градусов */
-	background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+	/* Градиентный фон от темно-синего к черному под 135 градусов */
+	background: linear-gradient(135deg, #1e3c72 0%, #0a0a0a 100%);
 	min-height: 100vh; /*Минималка в высоту окна браузера */
 	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 	line-height: 1.6;
@@ -21,7 +21,7 @@ body {
 	left: 0;
 	width: 100%;
 	height: 100%;
-	background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+	background: linear-gradient(135deg, #1e3c72 0%, #0a0a0a 100%);
 
 	display: none; /*Скрытие по умолчанию, через js будет изменен*/
 	justify-content: center;
@@ -91,8 +91,383 @@ body {
 	margin: 0 auto;
 	padding: 0 20px;
 }
+
 /*Контейнер слайдера*/
 .slider-container {
 	position: relative; /*Для абсолютного позиционирования дочерних*/
 	margin-bottom: 30px;
+}
+
+/* Основной слайдер */
+.slider {
+	margin: 0 auto;
+	width: 100%;
+	max-width: 800px;
+	height: 450px;
+	background-color: #1a1a2e;
+	border-radius: 20px;
+	overflow: hidden;
+	position: relative;
+	box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+	transition: transform 0.3s ease;
+}
+
+.slider:hover {
+	transform: translateY(-5px);
+	box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+}
+
+/* Каждый отдельный слайд */
+.slide {
+	position: absolute; /*Слайды наклаыдваются друг на друга*/
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-size: cover; /*Заполнение без искажений*/
+	background-position: center;
+	background-repeat: no-repeat;
+	border-radius: 20px;
+
+	transform: scale(1.1);
+	opacity: 0; /*Прозрачность*/
+	pointer-events: none; /*Игнорирвоание кликов*/
+}
+
+.slide.active {
+	transform: scale(1);
+	opacity: 1;
+	pointer-events: auto; /*Разрешение на клики*/
+	z-index: 1; /*Поверх всех слайдов*/
+}
+
+.slide.hidden {
+	transform: scale(0.9);
+	opacity: 0;
+	pointer-events: none;
+}
+
+.slide-info {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background: linear-gradient(transparent, rgba(0, 0, 0, 0.8)); /*Градиент поверх изображения*/
+	color: white;
+	padding: 30px 20px 20px;
+	border-radius: 0 0 20px 20px;
+	z-index: 2; /*Поверх слайдов*/
+}
+
+.slide-title {
+	font-size: 1.5rem;
+	font-weight: 600;
+	margin-bottom: 8px;
+	text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Описание слайда */
+.slide-description {
+	font-size: 1rem;
+	opacity: 0.9;
+	line-height: 1.5;
+	text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+/* Добавил контейнер для кнопок управления - они будут по краям слайдера */
+.slider-controls {
+	position: absolute; /* Позиционируем относительно slider-container */
+	top: 50%; /* Вертикальное центрирование */
+	left: 0;
+	right: 0;
+	transform: translateY(-50%); /* Точное центрирование */
+	display: flex;
+	justify-content: space-between; /* Кнопки по краям */
+	padding: 0 20px; /* Отступы от краев */
+	z-index: 3; /* Поверх всего контента */
+}
+
+/* Общие стили для кнопок управления */
+/* Сделал кнопки полупрозрачными с эффектом стекла */
+.control-btn {
+	background: rgba(255, 255, 255, 0.2); /* Полупрозрачный белый */
+	border: 2px solid rgba(255, 255, 255, 0.3); /* Полупрозрачная граница */
+	color: white;
+	padding: 12px 24px;
+	border-radius: 50px; /* Овальная форма */
+	cursor: pointer;
+	font-size: 16px;
+	font-weight: 500;
+	backdrop-filter: blur(5px); /* Легкое размытие фона */
+	transition: all 0.3s ease; /* Плавные анимации всех свойств */
+	display: flex;
+	align-items: center;
+	gap: 8px; /* Расстояние между иконкой и текстом */
+}
+
+/* Эффект при наведении на кнопки */
+/* Добавил интерактивность - кнопки поднимаются при наведении */
+.control-btn:hover {
+	background: rgba(255, 255, 255, 0.3); /* Более непрозрачный фон */
+	transform: translateY(-2px); /* Легкий подъем */
+	box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* Тень при наведении */
+}
+
+/* Эффект при нажатии на кнопки */
+.control-btn:active {
+	transform: translateY(0); /* Возвращаем на место */
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); /* Уменьшаем тень */
+}
+
+/* Контейнер для точек-индикаторов внизу слайдера */
+.indicators {
+	display: flex;
+	justify-content: center; /* Центрируем точки */
+	gap: 12px; /* Расстояние между точками */
+	margin-top: 20px;
+	flex-wrap: wrap; /* Перенос на мобильных */
+}
+
+/* Отдельная точка-индикатор */
+/* Сделал точки круглыми с плавными переходами */
+.indicator {
+	width: 12px;
+	height: 12px;
+	border-radius: 50%; /* Круглая форма */
+	background: rgba(255, 255, 255, 0.3); /* Полупрозрачный белый */
+	cursor: pointer; /* Курсор-рука при наведении */
+	border: none; /* Убираем стандартные стили кнопки */
+	transition: all 0.3s ease; /* Плавные анимации */
+	position: relative;
+}
+
+/* Эффект при наведении на индикатор */
+.indicator:hover {
+	background: rgba(255, 255, 255, 0.5); /* Более яркий */
+	transform: scale(1.2); /* Увеличиваем */
+}
+
+/* Активный индикатор */
+/* Активная точка выделяется размером и свечением */
+.indicator.active {
+	background: white; /* Белый цвет */
+	transform: scale(1.3); /* Крупнее остальных */
+	box-shadow: 0 0 10px rgba(255, 255, 255, 0.5); /* Свечение */
+}
+
+/* Вращение спиннера загрузки */
+@keyframes spin {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+}
+
+/* Плавное появление */
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+		transform: translateY(20px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+/* Пульсирующая анимация для текста загрузки */
+@keyframes pulse {
+	0%,
+	100% {
+		opacity: 0.7;
+	}
+	50% {
+		opacity: 1;
+	}
+}
+
+/* Планшеты и маленькие ноутбуки */
+@media (max-width: 850px) {
+	.slider {
+		height: 400px; /* Уменьшаем высоту */
+		max-width: 95%; /* Занимает почти всю ширину */
+	}
+
+	.app-title {
+		font-size: 2rem; /* Уменьшаем заголовок */
+	}
+
+	.control-btn {
+		padding: 10px 20px; /* Уменьшаем кнопки */
+		font-size: 14px;
+	}
+}
+
+/* Мобильные телефоны */
+@media (max-width: 600px) {
+	.slider {
+		height: 300px; /* Еще меньше высота */
+		border-radius: 15px; /* Меньше скругление */
+	}
+
+	.slide-info {
+		padding: 25px 15px 15px; /* Меньше отступы */
+	}
+
+	.slide-title {
+		font-size: 1.3rem; /* Меньше заголовок */
+	}
+
+	.slide-description {
+		font-size: 0.9rem; /* Меньше описание */
+	}
+
+	.app-title {
+		font-size: 1.8rem;
+	}
+
+	.app-subtitle {
+		font-size: 1rem;
+	}
+
+	.control-btn {
+		padding: 8px 16px;
+		font-size: 12px;
+	}
+
+	.indicators {
+		gap: 8px; /* Меньше расстояние между точками */
+	}
+
+	.indicator {
+		width: 10px;
+		height: 10px;
+	}
+}
+
+/* Очень маленькие экраны */
+/* Для самых маленьких экранов оставляю только иконки на кнопках */
+@media (max-width: 400px) {
+	.slider {
+		height: 250px;
+	}
+
+	.slider-controls {
+		padding: 0 10px; /* Меньше отступы для кнопок */
+	}
+
+	.control-btn span {
+		display: none; /* Скрываем текст, оставляем только иконки */
+	}
+
+	.control-btn {
+		padding: 12px; /* Квадратные кнопки */
+	}
+}
+
+/* Стили для экрана ошибок */
+.error-content {
+	text-align: center;
+	animation: fadeIn 0.5s ease-in;
+	max-width: 400px;
+	padding: 40px;
+}
+
+.error-content h2 {
+	font-size: 2rem;
+	margin-bottom: 20px;
+	color: #ff6b6b;
+}
+
+.error-content p {
+	font-size: 1.1rem;
+	margin-bottom: 30px;
+	opacity: 0.9;
+	line-height: 1.5;
+}
+
+.retry-btn {
+	background: rgba(255, 255, 255, 0.2);
+	border: 2px solid rgba(255, 255, 255, 0.3);
+	color: white;
+	padding: 12px 24px;
+	border-radius: 50px;
+	cursor: pointer;
+	font-size: 16px;
+	backdrop-filter: blur(5px);
+	transition: all 0.3s ease;
+}
+
+.retry-btn:hover {
+	background: rgba(255, 255, 255, 0.3);
+	transform: translateY(-2px);
+}
+
+/* Дополнительные эффекты для космической темы */
+.slide::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: radial-gradient(ellipse at center, transparent 0%, rgba(0, 0, 0, 0.1) 40%, rgba(0, 0, 0, 0.3) 100%);
+	border-radius: 20px;
+	pointer-events: none;
+	z-index: 1;
+}
+
+/* Эффект звездной пыли для активного слайда */
+.slide.active::after {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-image: radial-gradient(2px 2px at 20% 30%, white 50%, transparent 100%),
+		radial-gradient(2px 2px at 80% 70%, white 50%, transparent 100%), radial-gradient(1px 1px at 40% 80%, white 50%, transparent 100%);
+	background-repeat: no-repeat;
+	animation: twinkle 3s ease-in-out infinite;
+	pointer-events: none;
+	z-index: 2;
+}
+
+@keyframes twinkle {
+	0%,
+	100% {
+		opacity: 0.3;
+	}
+	50% {
+		opacity: 1;
+	}
+}
+
+/* Индикатор прогресса автоплея */
+.indicator {
+	position: relative;
+	overflow: hidden;
+}
+
+.indicator.active::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	background: white;
+	animation: progress linear;
+	animation-duration: inherit;
+}
+
+@keyframes progress {
+	from {
+		transform: translateX(-100%);
+	}
+	to {
+		transform: translateX(0);
+	}
 }
