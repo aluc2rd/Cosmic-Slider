@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Cosmic Explorer - Слайдер космических туманностей</title>
+		<meta name="description" content="Интерактивный слайдер с красивыми космическими туманностями и галактиками" />
+		<link rel="stylesheet" href="./css/main.css" />
+	</head>
+	<body>
+		<div class="loading-screen" id="loadingScreen">
+			<div class="loading-content">
+				<div class="spinner"></div>
+				<p>Загрузка космических туманностей...</p>
+			</div>
+		</div>
+
+		<header class="header">
+			<div class="header-content">
+				<h1 class="app-title" id="appTitle">Cosmic Explorer</h1>
+				<p class="app-subtitle" id="appSubtitle">Путешествие по туманностям Вселенной</p>
+			</div>
+		</header>
+
+		<main class="main-content">
+			<div class="slider-container">
+				<div class="slider" id="slider">
+					<!-- Слайды будут добавляться динамически -->
+				</div>
+
+				<div class="slide-info" id="slideInfo">
+					<h2 class="slide-title" id="slideTitle"></h2>
+					<p class="slide-description" id="slideDescription"></p>
+				</div>
+
+				<div class="slider-controls">
+					<button class="control-btn prev-btn" id="btnPrev" aria-label="Предыдущий слайд">
+						<span>Назад</span>
+					</button>
+					<button class="control-btn next-btn" id="btnNext" aria-label="Следующий слайд">
+						<span>Вперед</span>
+					</button>
+				</div>
+			</div>
+
+			<div class="indicators" id="indicatorsContainer">
+				<!-- Индикаторы будут добавляться динамически -->
+			</div>
+		</main>
+
+		<!-- Подключаем конфиг первым -->
+		<script src="./js/config.js"></script>
+		<script src="./js/utils/imageLoader.js"></script>
+		<script src="./js/main.js"></script>
+	</body>
+</html>
