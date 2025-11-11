@@ -7,9 +7,6 @@
 [![JavaScript](https://img.shields.io/badge/JavaScript-ES6+-yellow.svg)](https://developer.mozilla.org/ru/docs/Web/JavaScript)
 [![CSS3](https://img.shields.io/badge/CSS3-Animation-blue.svg)](https://developer.mozilla.org/ru/docs/Web/CSS)
 [![HTML5](https://img.shields.io/badge/HTML5-Semantic-orange.svg)](https://developer.mozilla.org/ru/docs/Web/HTML)
-[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
-
-**Интерактивный слайдер с красивыми космическими туманностями и галактиками.** Идеальный проект для изучения современного JavaScript, CSS анимаций и адаптивного дизайна.
 
 ## 🚀 Демо
 
