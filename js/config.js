@@ -51,7 +51,7 @@ const COSMIC_CONFIG = {
 		},
 		{
 			url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Ngc2392.jpg/1200px-Ngc2392.jpg',
-			title: 'Эскимосская туманность, также известная как Туманность Клоун-Фейс',
+			title: 'Туманность Клоун-Фейс',
 			description: 'Биполярная двухслойная планетарная туманность',
 		},
 		{
