@@ -1,7 +1,3 @@
-[file name]: README.md
-
-[file content begin]
-
 # 🌌 Cosmic Slider - Слайдер космических туманностей
 
 [![JavaScript](https://img.shields.io/badge/JavaScript-ES6+-yellow.svg)](https://developer.mozilla.org/ru/docs/Web/JavaScript)
@@ -10,7 +6,7 @@
 
 ## 🚀 Демо
 
-**[Посмотреть живую демонстрацию](https://github.com/aluc2rd/Cosmic-Slider/)**
+**[Посмотреть живую демонстрацию](https://aluc2rd.github.io/Cosmic-Slider/)**
 
 ![Главный экран](screenshots/desktop-main.png)
 
