@@ -15,20 +15,60 @@ const COSMIC_CONFIG = {
 			description: 'Планетарная туманность в созвездии Водолея',
 		},
 		{
-			url: 'https://i.pinimg.com/736x/e5/6e/ef/e56eef04b250c428fc594a4620ae6ee8.jpg',
-			title: 'Космическая красота',
-			description: 'Завораживающие виды далеких галактик',
+			url: 'https://cdn.shazoo.ru/745142_4MRghr0_nebula2.jpg',
+			title: 'Туманность Конская Голова',
+			description: 'Туманность в созвездии Ориона',
 		},
 		{
-			url: 'https://i.pinimg.com/736x/ca/e8/98/cae898dd856457c0b9ae8f43f856c9cc.jpg',
-			title: 'Глубины космоса',
-			description: 'Путешествие к далеким звездам',
+			url: 'https://cs5.pikabu.ru/post_img/big/2015/11/20/5/1448006034_1097824289.jpg',
+			title: 'Туманность Кошачий Глаз',
+			description: 'Планетарная туманность в созвездии Дракона',
 		},
 		{
-			url: 'https://avatars.mds.yandex.net/i?id=c60a218a122dac86220d7481b78c4e82_l-5899861-images-thumbs&n=13',
-			title: 'Бесконечность',
-			description: 'Масштабы вселенной поражают воображение',
+			url: 'https://i.pinimg.com/originals/a4/d5/39/a4d5391db2e83745b5788ee09f539459.jpg',
+			title: 'Туманность Песочные Часы',
+			description: 'ТУманность в созвездии Тельца',
 		},
+		{
+			url: 'https://i.pinimg.com/originals/ee/cd/4a/eecd4a793addcadc4fe7525bb20ac200.jpg',
+			title: 'Крабовидная туманность',
+			description: 'Газообразная туманность в созвездии Тельца',
+		},
+		{
+			url: 'https://naked-science.ru/wp-content/uploads/2022/12/image-586.png',
+			title: 'Шлем Тора',
+			description: 'Эмиссионная туманность в созвездии Большого Пса вокруг звезды Вольфа — Райе',
+		},
+		{
+			url: 'https://avatars.mds.yandex.net/i?id=52dd9746a1600b8cb2a14779922267a1_l-4033773-images-thumbs&n=13',
+			title: 'Туманность Черепаха',
+			description: 'Планетарная туманность, расположенная в созвездии Геркулеса',
+		},
+		{
+			url: 'https://avatars.mds.yandex.net/i?id=15a2b3c87ae0cc084e6360aa63f802ba_l-12753003-images-thumbs&n=13',
+			title: 'Призрак Юпитера',
+			description: 'Планетарная туманность, расположенная в созвездии Гидры',
+		},
+		{
+			url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Ngc2392.jpg/1200px-Ngc2392.jpg',
+			title: 'Эскимосская туманность, также известная как Туманность Клоун-Фейс',
+			description: 'Биполярная двухслойная планетарная туманность',
+		},
+		{
+			url: 'https://i.pinimg.com/originals/7a/61/f5/7a61f52e6f71ec0f39da3577bfcaf270.jpg',
+			title: 'Туманность Медузы',
+			description: 'Планетарная туманность в созвездии Близнецов',
+		},
+		// {
+		// 	url: '',
+		// 	title: '',
+		// 	description: '',
+		// },
+		// {
+		// 	url: '',
+		// 	title: '',
+		// 	description: '',
+		// },
 	],
 	// Настройки поведения слайдера
 	slider: {
@@ -45,9 +85,7 @@ const COSMIC_CONFIG = {
 		title: 'Cosmic Slider',
 		// Подзаголовок с описанием
 		subtitle: 'Путешествие по туманностям Вселенной',
-		// Текст кнопки "Назад"
 		prevButton: 'Назад',
-		// Текст кнопки "Вперед"
 		nextButton: 'Вперед',
 	},
 };
